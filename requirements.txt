@@ -1,0 +1,5 @@
+PyQt6==6.5.0
+pyserial==3.5
+python-socketio==5.8.0
+folium==0.14.0
+requests==2.31.0

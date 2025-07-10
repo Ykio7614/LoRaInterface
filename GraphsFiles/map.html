@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e416d9bbe60750744ecaf8d0610d94ec {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e416d9bbe60750744ecaf8d0610d94ec" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e416d9bbe60750744ecaf8d0610d94ec = L.map(
+                "map_e416d9bbe60750744ecaf8d0610d94ec",
+                {
+                    center: [59.94319, 30.466548],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3e10c5f6b594f69ecf0b8a6c46fb8bb1 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3e10c5f6b594f69ecf0b8a6c46fb8bb1.addTo(map_e416d9bbe60750744ecaf8d0610d94ec);
+        
+    
+            var marker_c4aba79294fd58a880712ef89e1a80f8 = L.marker(
+                [59.94319, 30.466548],
+                {
+}
+            ).addTo(map_e416d9bbe60750744ecaf8d0610d94ec);
+        
+    
+        var popup_af352052087931252e2e448106acfbd8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1335b829e892de88199e16e9fd2f579a = $(`<div id="html_1335b829e892de88199e16e9fd2f579a" style="width: 100.0%; height: 100.0%;">                 <b>Время:</b> 2025-05-02 21:12:36<br>                 <b>Расстояние:</b> 13.18 м<br>                 <b>RSSI:</b> -27.0<br>                 <b>SNR:</b> 6.5<br>                 <b>Ошибки:</b> 0<br>                 <b>SF:</b> 12<br>                 <b>Tx:</b> 17<br>                 <b>BW:</b> 500.0                 </div>`)[0];
+                popup_af352052087931252e2e448106acfbd8.setContent(html_1335b829e892de88199e16e9fd2f579a);
+            
+        
+
+        marker_c4aba79294fd58a880712ef89e1a80f8.bindPopup(popup_af352052087931252e2e448106acfbd8)
+        ;
+
+        
+    
+    
+            marker_c4aba79294fd58a880712ef89e1a80f8.bindTooltip(
+                `<div>
+                     Расстояние: 13.18 м
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ed428e5311861a0ad7ea6a6bfe095aa3 = L.marker(
+                [59.94369, 30.470329],
+                {
+}
+            ).addTo(map_e416d9bbe60750744ecaf8d0610d94ec);
+        
+    
+        var popup_f79721f6efa2d899ae4bd2ec1fabe725 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_32624735c65cc15099089f4d6d1db782 = $(`<div id="html_32624735c65cc15099089f4d6d1db782" style="width: 100.0%; height: 100.0%;">                 <b>Время:</b> 2025-05-02 21:26:16<br>                 <b>Расстояние:</b> 263.34 м<br>                 <b>RSSI:</b> -73.0<br>                 <b>SNR:</b> 5.75<br>                 <b>Ошибки:</b> 0<br>                 <b>SF:</b> 12<br>                 <b>Tx:</b> 17<br>                 <b>BW:</b> 500.0                 </div>`)[0];
+                popup_f79721f6efa2d899ae4bd2ec1fabe725.setContent(html_32624735c65cc15099089f4d6d1db782);
+            
+        
+
+        marker_ed428e5311861a0ad7ea6a6bfe095aa3.bindPopup(popup_f79721f6efa2d899ae4bd2ec1fabe725)
+        ;
+
+        
+    
+    
+            marker_ed428e5311861a0ad7ea6a6bfe095aa3.bindTooltip(
+                `<div>
+                     Расстояние: 263.34 м
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

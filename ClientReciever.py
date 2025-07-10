@@ -3,7 +3,7 @@ import json
 import logging
 import sys
 from PyQt6.QtWidgets import QApplication
-from ClientRecieverGui import MainWindow
+from LoRaInterface.ClientRecieverGui import MainWindow
 
 # Настройка логирования
 logging.basicConfig(level=logging.WARNING)
@@ -14,12 +14,13 @@ sio = socketio.Client(logger=False, engineio_logger=False)
 
 
 
-# Текущие настройки LoRa
 current_settings = {
     "sf": 12,
     "tx": 17,
     "bw": 125.0,
-    "current_distance": None  # Добавляем поле для текущего расстояния
+    "current_distance": None,
+    "latitude": None,
+    "longitude": None
 }
 
 
@@ -29,7 +30,6 @@ Lora_ip = "192.168."
 @sio.event
 def connect():
     logger.info('Подключение к серверу установлено')
-    # Регистрируем клиент как desktop
     sio.emit('register_desktop')
 
 @sio.event
@@ -45,15 +45,17 @@ def on_message(data):
     message = json.loads(data) if isinstance(data, str) else data
     print(f'Получено сообщение: {message}')
     
-    # Проверяем наличие новых настроек
     if message.get("settings"):
         update_settings(message["settings"])
     
-    # Обновляем расстояние, если оно есть в сообщении
     if "distance" in message:
         current_settings["current_distance"] = message["distance"]
+    
+    if "latitude" in message:
+        current_settings["latitude"] = message["latitude"]
+    if "longitude" in message:
+        current_settings["longitude"] = message["longitude"]
         
-    # Сохраняем информацию о пакете
     if all(key in message for key in ['datetime', 'distance', 'bit_errors', 'snr', 'rssi']):
         try:
             try:
@@ -65,20 +67,22 @@ def on_message(data):
                 packets = []
             
             packet_info = {
-                'datetime': str(message['datetime']),  # Убедимся, что datetime в строковом формате
-                'distance': float(message['distance']),  # Преобразуем в число
+                'datetime': str(message['datetime']),
+                'distance': float(message['distance']),
                 'bit_errors': int(message['bit_errors']),
                 'snr': float(message['snr']),
                 'rssi': float(message['rssi']),
                 'sf': int(current_settings['sf']),
                 'tx': int(current_settings['tx']),
-                'bw': float(current_settings['bw'])
+                'bw': float(current_settings['bw']),
+                'latitude': current_settings.get('latitude'),
+                'longitude': current_settings.get('longitude')
             }
             
             packets.append(packet_info)
             
             with open('packets_info.json', 'w') as f:
-                json.dump(packets, f, indent=2)  # Добавим indent для читаемости
+                json.dump(packets, f, indent=2)
         except Exception as e:
             print(f"Ошибка при сохранении данных: {str(e)}")
 
@@ -87,7 +91,6 @@ def update_settings(new_settings):
     current_settings = new_settings
     print(f'Получены новые настройки: {current_settings}')
     
-    # Отправляем новые настройки на ESP32
     import requests
     from urllib.parse import urlencode
     params = urlencode({
@@ -112,9 +115,7 @@ def update_settings(new_settings):
 
 def start_client():
     try:
-        # Запускаем только GUI без подключения к серверу
         app = QApplication(sys.argv)
-        # Устанавливаем светлую палитру
         from PyQt6.QtGui import QPalette, QColor
         palette = QPalette()
         palette.setColor(QPalette.ColorRole.Window, QColor(245, 245, 245))
