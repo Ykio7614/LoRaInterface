@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  qt_app:
+    build: .
+    environment:
+      # Allow X server connection for GUI display
+      - DISPLAY=${DISPLAY}
+    volumes:
+      # Mount the X11 socket for GUI display
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # Optional: Mount your project directory for live changes during development
+      # - ./your_project_folder:/app

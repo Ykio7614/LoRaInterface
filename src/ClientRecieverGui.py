@@ -15,7 +15,7 @@ import logging
 import traceback
 import folium
 import webbrowser
-from LoRaInterface.GraphicsBuilder import GraphicsBuilder
+from .GraphicsBuilder import GraphicsBuilder
 
 # Настраиваем логирование
 logging.basicConfig(
@@ -497,7 +497,7 @@ class MainWindow(QMainWindow):
     def create_new_graphs(self):
         """Создает новые графики из текущего файла"""
         try:
-            os.makedirs("GraphsFiles", exist_ok=True)
+            os.makedirs("../GraphsFiles", exist_ok=True)
             
             builder = GraphicsBuilder(self.current_file)
             
@@ -554,7 +554,7 @@ class MainWindow(QMainWindow):
                     tooltip=f"Расстояние: {packet.get('distance', '-'):.2f} м"
                 ).add_to(m)
             
-            map_file = os.path.join("GraphsFiles", "map.html")
+            map_file = os.path.join("../GraphsFiles", "map.html")
             m.save(map_file)
             
             webbrowser.open('file://' + os.path.abspath(map_file))
@@ -581,7 +581,7 @@ class MainWindow(QMainWindow):
 if __name__ == '__main__':
     try:
         app = QApplication(sys.argv)
-        import LoRaInterface.ClientReciever as client_module
+        import ClientReciever as client_module
         window = MainWindow(client_module)
         window.show()
         sys.exit(app.exec())

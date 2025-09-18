@@ -10,7 +10,7 @@ class GraphicsBuilder:
         self.json_file_path = json_file_path
         # Создаем директорию для графиков с тем же именем, что и JSON файл
         self.graphs_dir = os.path.join(
-            "GraphsFiles",
+            "../GraphsFiles",
             os.path.splitext(os.path.basename(json_file_path))[0]
         )
         os.makedirs(self.graphs_dir, exist_ok=True)
