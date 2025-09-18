@@ -3,7 +3,7 @@ import json
 import logging
 import sys
 from PyQt6.QtWidgets import QApplication
-from LoRaInterface.ClientRecieverGui import MainWindow
+from .ClientRecieverGui import MainWindow
 
 # Настройка логирования
 logging.basicConfig(level=logging.WARNING)
@@ -138,5 +138,4 @@ def start_client():
         logger.error(f'Ошибка при запуске приложения: {e}')
         return 1
 
-if __name__ == '__main__':
-    sys.exit(start_client())
+
